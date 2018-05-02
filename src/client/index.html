@@ -9,22 +9,34 @@
 </head>
 <body>
     <div class="container">
-        <h3>Client</h3>
+        <div class="row my-5">
+            <div class="col text-center">
+                <h1 class="display-4 text-light">MinChat</h1>
+            </div>
+        </div>
         
         <div class="container" id="chat-history-window"></div>
         
-        <div class="form-group">
-            <label for="chat-text-area">Compose Message</label>
-            <textarea class="form-control" name="chat-text-box" id="chat-text-box" cols="30" rows="5"></textarea>
-            
-        </div>
-        <div class="form-group">
-            <button type="button" class="btn btn-outline-primary" onclick="sendTextboxChatMessage()">
-                Send
-            </button>
+        <div class="jumbotron jumbotron-fluid my-accent-color">
+            <div class="row">
+                <div class="col"></div>
+                <div class="col-9">
+                    <label for="chat-text-box"><h4>Compose Message</h4></label>
+                    <div class="input-group">
+                        <textarea class="form-control" name="chat-text-box" id="chat-text-box" aria-label="With textarea"></textarea>
+                        <div class="input-group-append">
+                            <button type="button" class="btn btn-outline-light" onclick="sendTextboxChatMessage()">
+                                Send
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col"></div>
+            </div>
         </div>
     </div>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 </body>
 </html>
