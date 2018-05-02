@@ -6,14 +6,14 @@ let websocket = new WebSocket(KNOWN_SERVER_ADDRESS);
 let username = "TestUser123";
 
 class ChatMessage {
-    constructor(user, body, timestamp) {
-        this.user = user;
+    constructor(sender, body, timestamp) {
+        this.sender = sender;
         this.body = body;
         this.timestamp = timestamp;
     }
 
     static fromJSON(obj) {
-        return new ChatMessage(obj.user, obj.body, obj.timestamp);
+        return new ChatMessage(obj.sender, obj.body, obj.timestamp);
     }
 
     transmit(websocket) {
@@ -25,7 +25,7 @@ class ChatMessage {
             <div class="row my-5">
                 <div class="card">
                     <div class="card-header">
-                        ${this.user}
+                        ${this.sender}
                     </div>
                     <div class="card-body">
                         ${this.body}
