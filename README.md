@@ -3,10 +3,11 @@ A minimal (or at least very small) chat client/server implementation written in 
 
 ## The Plan
 * [ ] Javascript clients run in browser
+  * [ ] Direct new users to login page
   * [ ] Listen for new chat messages sent from server, updates client's chat history
   * [ ] Allow users to type messages while new ones are being recieved simultaneously
-  * [ ] Send new chat messages to the server over the WebSocket
+  * [X] Send new chat messages to the server over the WebSocket
 * [ ] Rust-lang server
-  * [ ] Listens for new client connnects, spawns thread to handle each new client
+  * [X] Listens for new client connnects, spawns thread to handle each new client
   * [ ] Client handlers listen for updates to central chat history, update their client on change
-  * [ ] Recieves new chat messages from assigned client, adds them to central chat history
+  * [X] Recieves new chat messages from assigned client, adds them to central chat history
