@@ -27,8 +27,7 @@ pub struct ConnectedClient {
 #[derive(Debug, Serialize, Deserialize)]
 struct ChatMessage {
     sender: String,
-    // TODO: Find out how JS will send timestamps.
-    //timestamp: DateTime<UTC>,
+    timestamp: u64,
     body: String
 }
 
@@ -76,6 +75,6 @@ pub struct ClientHandler {
 }
 
 fn main() {
-    let mut server = ChatServer::new();
+    let server = ChatServer::new();
     server.run();
 }
