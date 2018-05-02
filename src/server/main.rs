@@ -1,5 +1,3 @@
-extern crate chrono;
-
 #[macro_use]
 extern crate serde_derive;
 extern crate serde;
@@ -13,8 +11,6 @@ extern crate websocket;
 use std::net::{SocketAddrV4, TcpStream};
 use std::sync::{Arc, Mutex};
 use std::thread;
-
-use chrono::{DateTime, UTC};
 
 use websocket::server::{NoTlsAcceptor};
 use websocket::OwnedMessage::{Text, Close};

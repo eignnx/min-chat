@@ -8,7 +8,6 @@ name = "server"
 path = "src/server/main.rs"
 
 [dependencies]
-chrono = { version = "0.3", features = ["serde"] }
 dotenv = "0.11.0"
 dotenv_codegen = "0.11.0"
 
