@@ -22,30 +22,32 @@ class ChatMessage {
 
     toHTML() {
         return `
-            <div class="row my-5">
-                <div class="card">
-                    <div class="card-header">
-                        ${this.sender}
-                    </div>
-                    <div class="card-body">
-                        ${this.body}
-                    </div>
-                    <div class="card-footer text-muted">
-                        ${new Date(this.timestamp).toLocaleString()}
+            <div class="row my-3">
+                <div class="col"></div>
+                <div class="col-10">
+                    <div class="card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col"><strong>${this.sender}</strong></div>
+                                <div class="col text-muted text-right">${new Date(this.timestamp).toLocaleString()}</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            ${this.body}
+                        </div>
                     </div>
                 </div>
+                <div class="col"></div>
             </div>
         `;
     }
 }
 
 function sendTextboxChatMessage() {
-    let msg = new ChatMessage(
-        username,
-        document.getElementById("chat-text-box").value,
-        Date.now()
-    );
+    let textBox = document.getElementById("chat-text-box");
+    let msg = new ChatMessage(username, textBox.value, Date.now());
     msg.transmit(websocket);
+    textBox.value = "";
 }
 
 websocket.onmessage = (event) => {
