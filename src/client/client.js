@@ -1,9 +1,4 @@
-
 const KNOWN_SERVER_ADDRESS = "ws:127.0.0.1:9090";
-const PROTOCOL = "MinChatProtocol";
-
-let websocket = new WebSocket(KNOWN_SERVER_ADDRESS);
-let username = "TestUser123";
 
 class ChatMessage {
     constructor(sender, body, timestamp) {
@@ -43,15 +38,31 @@ class ChatMessage {
     }
 }
 
-function sendTextboxChatMessage() {
-    let textBox = document.getElementById("chat-text-box");
-    let msg = new ChatMessage(username, textBox.value, Date.now());
-    msg.transmit(websocket);
-    textBox.value = "";
-}
 
-websocket.onmessage = (event) => {
-    let msg = ChatMessage.fromJSON(JSON.parse(event.data));
-    let window = document.getElementById("chat-history-window");
-    window.innerHTML += msg.toHTML();
-}
+$(() => {
+    $("#loginModal").modal("show");
+    $("#my-login-button").click(function() {
+        let username = $("#username-field")[0].value;
+        $("#loginModal").modal("hide");
+        
+        let websocket = new WebSocket(KNOWN_SERVER_ADDRESS);
+
+        websocket.onmessage = (event) => {
+            let msg = ChatMessage.fromJSON(JSON.parse(event.data));
+            $("#chat-history-window")[0].innerHTML += msg.toHTML();
+        };
+
+        // let newUser = { "username": username };
+        // websocket.send(JSON.stringify(newUser));
+
+        $("#send-message-button").click(function() {
+            console.log("Sending...");
+            let textBox = $("#chat-text-box")[0];
+            let msg = new ChatMessage(username, textBox.value, Date.now());
+            console.log(msg);
+            msg.transmit(websocket);
+            textBox.value = "";
+        });
+
+    });
+});
