@@ -1,4 +1,4 @@
-const KNOWN_SERVER_ADDRESS = "ws:127.0.0.1:9090";
+const KNOWN_SERVER_ADDRESS = "ws:10.0.0.241:9090";
 
 class ChatMessage {
     constructor(sender, body, timestamp) {
