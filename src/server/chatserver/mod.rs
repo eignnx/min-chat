@@ -23,6 +23,7 @@ impl ChatServer {
                 .expect("Could not parse server address");
         
         println!("Launching chat server on {:?}", address);
+        println!("ip = {:?}", address.ip());
 
         let new_connections = websocket::sync::Server::bind(address).unwrap();
 
