@@ -1,15 +1,8 @@
-use serde_json;
-use serde::{Serialize, Deserialize};
+extern crate serde_json;
+
 use websocket;
 
-#[derive(Debug, Eq, PartialEq, Hash)]
-pub struct ConnectedClient {
-    username: String,
-    id: u64,
-    // Color, Avatar, ...
-}
-
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Clone, Serialize, Deserialize)]
 pub struct ChatMessage {
     sender: String,
     timestamp: u64,
